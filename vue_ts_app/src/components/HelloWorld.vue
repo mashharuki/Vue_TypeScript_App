@@ -14,15 +14,23 @@
 
 <script lang="tsx">
   import { VNode } from 'vue'
-  import { Vue } from 'vue-class-component'
+  import { VueC } from "vue-class-component"
 
-  export default class HelloWorld extends Vue {
+  export default class HelloWorld extends VueC {
     
     msg = "Vue sample."
     val = 1
 
     doAction(): void {
       this.val += 1
+    }
+
+    get sum(): number {
+      let re = 0
+      for (let i=1;i<this.val;i++) {
+        re += 1
+      }
+      return re
     }
 
     render(): VNode {
@@ -33,6 +41,7 @@
             <h2 class="my-3">number counter.</h2>
             <div class="alert alert-info">
               <h3 onClick={this.doAction}>{this.val}</h3>
+              <h4>(sum: {this.sum})</h4>
             </div>
           </div>
         </div>
